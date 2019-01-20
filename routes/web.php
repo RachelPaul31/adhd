@@ -24,6 +24,7 @@ Route::get('/assess/submit', 'AssessController@store');
 Route::get('/goals', 'GoalsController@all');
 Route::get('/tasks/checklist', 'TasksController@checklist');
 Route::get('/tasks/create', 'TasksController@new');
+Route::get('/goals/new', 'GoalsController@new');
 
 
 Route::POST('/create/task', 'TasksController@create');
@@ -31,7 +32,9 @@ Route::POST('/tasks/delete', 'TasksController@delete');
 Route::POST('/tasks/edit', 'TasksController@update');
 Route::POST('/tasks/complete', 'TasksController@complete');
 Route::POST('/create/assesstopic', 'AssessController@create');
-
+Route::POST('/goals/complete', 'GoalsController@complete');
+Route::POST('/goals/delete', 'GoalsController@delete');
+Route::POST('/goals/create', 'GoalsController@create');
 
 Route::get('/goals/{goal}', 'GoalsController@show');
 Route::get('/tasks/{task}', 'TasksController@show');

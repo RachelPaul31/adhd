@@ -134,9 +134,9 @@ class TasksController extends Controller
             $task->parent = 0;
         
         if($task->save()){
-            return redirect ('/checklist');
+            return redirect ('/tasks/checklist');
         } else{
-            return redirect ('/tasks/new')->with(["error" => "Task not created please try again"]);
+            return redirect ('/tasks/create')->with(["error" => "Task not created please try again"]);
         };
 
     }
@@ -159,7 +159,7 @@ class TasksController extends Controller
         if($delete){
             return back()->with(["status" => "Successfully removed task."]);
         } else{
-            return Redirect::back()->withErrors("An error occurred please try again");
+            return back()->withErrors("An error occurred please try again");
         };
     }
 

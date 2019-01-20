@@ -28,7 +28,7 @@
 
         </div>
         <div class="col-md-1 align-right">
-            <a class="btn btn-primary btn" href="/goals/create" role="button">Add goal</a>
+            <a class="btn btn-primary btn" href="/goals/new" role="button">Add goal</a>
         </div>
 
     </div>
