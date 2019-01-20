@@ -45,8 +45,8 @@
                     <ul class="navbar-nav mr-auto">
                     @guest
                         @else
-                            <li><a class="nav-link" href="/calendar">Calendar</a></li>
-                            <li><a class="nav-link" href="/checklist">Checklist</a></li>
+                            <li><a class="nav-link" href="/tasks/calendar">Calendar</a></li>
+                            <li><a class="nav-link" href="/tasks/checklist">Checklist</a></li>
                             <li><a class="nav-link" href="/assess">Self-Assess</a></li>
                             <li><a class="nav-link" href="/goals">Goals</a></li>
                             <li><a class="nav-link" href="/timer">Timer</a></li>

@@ -8,33 +8,41 @@
             Sort By:
         </div>
         <div class="col-md-1">
-            <form method="get" action="/checklist">
+            <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="importance"> 
                 <button type="submit" class="btn btn-primary btn-sm">Priority</button>
             </form>
         </div>
+        
         <div class="col-md-2">
-            <form method="get" action="/checklist">
+            <form method="get" action="/tasks/checklist">
+                {{ csrf_field() }}
+                <input type="hidden" name="sort" value="time"> 
+                <button type="submit" class="btn btn-primary btn-sm">Est. Time Needed</button>
+            </form>
+        </div>
+
+        <div class="col-md-1">
+            <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="due_date"> 
                 <button type="submit" class="btn btn-primary btn-sm">Due Date</button>
             </form>
         </div>
 
-        <div class="col-md-2">
-            <form method="get" action="/checklist">
-                {{ csrf_field() }}
-                <input type="hidden" name="sort" value="time"> 
-                <button type="submit" class="btn btn-primary btn-sm">Est. Time Needed</button>
-            </form>
-        </div>
         <div class="col-md-1">
-            <form method="get" action="/checklist">
+            <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="name"> 
                 <button type="submit" class="btn btn-primary btn-sm">A-Z</button>
             </form>
+        </div>
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-md-1 align-right">
+            <a class="btn btn-primary btn" href="/tasks/create" role="button">Add Task</a>
         </div>
 
     </div>
@@ -79,9 +87,9 @@
                 </div>
                 <div class="col-md-3">
                 @if($task->complete)
-                    <a href="/{{$task->id}}"><font color="black"><s><strong>{{ $task->name }}</strong></s></font></a>
+                    <a href="/tasks/{{$task->id}}"><font color="black"><s><strong>{{ $task->name }}</strong></s></font></a>
                 @else
-                    <a href="/{{$task->id}}" ><font color="black"><strong>{{ $task->name }} </strong></font></a>
+                    <a href="/tasks/{{$task->id}}" ><font color="black"><strong>{{ $task->name }} </strong></font></a>
                 @endif
                 </div>
                 <div class = "col-md-1 text-center">

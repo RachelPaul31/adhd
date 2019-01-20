@@ -18,7 +18,7 @@ class TasksController extends Controller
     {
         $events=[];
         $tasks = Task::where('user_id', "=", auth()->user()->id)->where("active", "=", 1)->get();
-        $url = 'http://127.0.0.1:8000/';
+        $url = 'http://127.0.0.1:8000/tasks/';
         foreach($tasks as $key=>$value){
             if($value->importance == 1){
                 
@@ -91,7 +91,7 @@ class TasksController extends Controller
             );
         }
         $calendar = Calendar::addEvents($events);
-        return view('calendar', compact('calendar'));
+        return view('tasks.calendar', compact('calendar'));
     }
 
     public function checklist(Request $request){
@@ -108,7 +108,7 @@ class TasksController extends Controller
         }
         $tasks = Task::where("user_id", "=", auth()->user()->id)->where("active", "=", 1)->orderBy($sort, $order)->get();
 
-        return view('checklist', compact('tasks'));
+        return view('tasks.checklist', compact('tasks'));
     }
 
     public function create(Request $request){
@@ -136,7 +136,7 @@ class TasksController extends Controller
         if($task->save()){
             return redirect ('/checklist');
         } else{
-            return redirect ('/newtask')->with(["error" => "Task not created please try again"]);
+            return redirect ('/tasks/new')->with(["error" => "Task not created please try again"]);
         };
 
     }
@@ -192,6 +192,9 @@ class TasksController extends Controller
         } else{
             return back()->withErrors("An error occurred please try again");
         };
+    }
+    public function new(){
+        return view('tasks.newtask');
     }
 
 }

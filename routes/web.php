@@ -18,17 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/calendar', 'TasksController@calendar');
+Route::get('/tasks/calendar', 'TasksController@calendar');
 Route::get('/assess', 'AssessController@assess');
 Route::get('/assess/submit', 'AssessController@store');
-Route::get('/checklist', 'TasksController@checklist');
-Route::get('/newtask', function(){
-    return view('newtask');
-});
+Route::get('/goals', 'GoalsController@all');
+Route::get('/tasks/checklist', 'TasksController@checklist');
+Route::get('/tasks/create', 'TasksController@new');
+
+
 Route::POST('/create/task', 'TasksController@create');
-Route::get('/{task}', 'TasksController@show');
 Route::POST('/tasks/delete', 'TasksController@delete');
 Route::POST('/tasks/edit', 'TasksController@update');
 Route::POST('/tasks/complete', 'TasksController@complete');
 Route::POST('/create/assesstopic', 'AssessController@create');
-Route::get('/goals', 'GoalsController@all');
+
+
+Route::get('/goals/{goal}', 'GoalsController@show');
+Route::get('/tasks/{task}', 'TasksController@show');
