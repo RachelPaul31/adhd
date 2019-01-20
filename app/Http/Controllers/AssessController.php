@@ -24,9 +24,21 @@ class AssessController extends Controller
             $response->answer = $request->option;
         
         if($response->save()){
-            return redirect ('/assess')->with(["status" => "successful"]);;
+            return redirect ('/assess');
         } else{
             return redirect ('/assess')->with(["error" => "Response not saved, please try again"]);
         };
+    }
+    public function create(Request $request){
+        $topic = new AssessTopics();
+
+            $topic->user_id = auth()->user()->id;
+            $topic->name = $request->name;
+        
+        if($topic->save()){
+            return redirect('/assess');
+        }else{
+            return redirect('/assess')->with(["error" => "An error occured, please try again"]);
+        }
     }
 }
