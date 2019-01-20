@@ -31,4 +31,4 @@ Route::POST('/tasks/delete', 'TasksController@delete');
 Route::POST('/tasks/edit', 'TasksController@update');
 Route::POST('/tasks/complete', 'TasksController@complete');
 Route::POST('/create/assesstopic', 'AssessController@create');
-Route::get('/goals', 'GoalsController@show');
+Route::get('/goals', 'GoalsController@all');

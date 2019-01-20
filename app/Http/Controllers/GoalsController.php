@@ -8,7 +8,8 @@ use Carbon\Carbon;
 
 class GoalsController extends Controller
 {
-    public function show(Request $request){
+    public function all(){
         return view('goals');
     }
+
 }
