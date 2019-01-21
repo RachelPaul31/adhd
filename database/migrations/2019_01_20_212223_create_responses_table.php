@@ -15,9 +15,12 @@ class CreateResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id');
-            $table->integer('answer');
             $table->integer('user_id');
+            $table->integer('on_task');
+            $table->integer('productivity');
+            $table->integer('progress');
+            $table->integer('organization');
+            $table->integer('prompt_completion');
             $table->timestamps();
         });
     }

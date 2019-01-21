@@ -20,21 +20,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tasks/calendar', 'TasksController@calendar');
 Route::get('/assess', 'AssessController@assess');
-Route::get('/assess/submit', 'AssessController@store');
 Route::get('/goals', 'GoalsController@all');
 Route::get('/tasks/checklist', 'TasksController@checklist');
 Route::get('/tasks/create', 'TasksController@new');
 Route::get('/goals/new', 'GoalsController@new');
-
-
+Route::get('/assess/submit', 'AssessController@new');
+Route::get('/timer', 'TimerController@timer');
 Route::POST('/create/task', 'TasksController@create');
 Route::POST('/tasks/delete', 'TasksController@delete');
 Route::POST('/tasks/edit', 'TasksController@update');
 Route::POST('/tasks/complete', 'TasksController@complete');
-Route::POST('/create/assesstopic', 'AssessController@create');
 Route::POST('/goals/complete', 'GoalsController@complete');
 Route::POST('/goals/delete', 'GoalsController@delete');
 Route::POST('/goals/create', 'GoalsController@create');
+Route::POST('/goals/edit', 'GoalsController@update');
 
-Route::get('/goals/{goal}', 'GoalsController@show');
 Route::get('/tasks/{task}', 'TasksController@show');

@@ -54,7 +54,11 @@ class GoalsController extends Controller
         }
 
         if($complete){
-            return back()->with(["status" => "Successfully marked as complete."]);
+            if($request->complete){
+                return back();
+            }else{
+                return back()->with(["status" => "Congratulations! You completed a goal! Make sure to reward yourself :)"]);
+            }
         } else{
             return back()->withErrors("An error occurred please try again");
         };
@@ -70,6 +74,22 @@ class GoalsController extends Controller
         } else{
             return back()->withErrors("An error occurred please try again");
         };
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->goal;
+        if($request->complete_by == NULL){
+            $update = Goal::where('id', $id)->update(['name' => $request->title, 'body' => $request->body, ]);
+        }else{
+            $update = Goal::where('id', $id)->update(['name' => $request->title, 'body' => $request->body, 'complete_by' => $request->complete_by, ]);
+        }
+
+        if($update){
+            return redirect('/goals')->with(["status" => "Edit successful"]);
+        } else{
+            return back()->withErrors("An error occurred please try again");
+        }; 
     }
 
 }

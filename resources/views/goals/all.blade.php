@@ -2,6 +2,24 @@
 
 @section('content')
 <div class="container">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    @if (count($errors))
+        <div class="form-group">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }} </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
+
         <!-- Sort Buttons -->
         <div class="row">
         <div class="col-md-1">
@@ -51,11 +69,11 @@
                     @endif
                 </form>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 @if($goal->complete)
-                    <a href="/goals/{{$goal->id}}"><font color="black"><s><strong>{{ $goal->name }}</strong></s></font></a>
+                    <font color="black"><s><strong>{{ $goal->name }}</strong></s></font>
                 @else
-                    <a href="/goals/{{$goal->id}}" ><font color="black"><strong>{{ $goal->name }} </strong></font></a>
+                    <font color="black"><strong>{{ $goal->name }} </strong></font>
                 @endif
             </div>
             <div class= "col-md-5">
@@ -63,6 +81,54 @@
             </div>
             <div class = "col-md-2 text-center">
                 <p> {{ Carbon\Carbon::parse($goal->complete_by)->format('m/d/y') }} </p>
+            </div>
+            <div class= "col-md-1 text-center">
+                    <!-- Button -->
+                    <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal">Edit</button>
+
+                    <!-- Start of Modal(popup) -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <!-- Modal header (title and X) -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Your Goal</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body- edit form -->
+                                <div class="modal-body">
+                                    <form method="POST" action="/goals/edit">
+                                        {{ csrf_field() }}
+                                        <!-- Title -->
+                                        <div class="form-group col-md-12">
+                                            <label for="title">Title:</label>
+                                            <input type="text" class="form-control" id="title" name="title" >
+                                        </div>
+                                        <!-- body -->
+                                        <div class="form-group col-md-12">
+                                            <label for="exampleInputPassword1">Body</label>
+                                            <textarea id="body" name="body" class="form-control" > </textarea>
+                                        </div>    
+                                        <!-- Date -->
+                                        <div class="form-group col-md-12">
+                                            <label for="complete_by">Date to Complete By:</label>
+                                            <input class="form-control" type="date" name="complete_by" id="complete_by">
+                                        </div>
+                                        <input type="hidden" name="goal" value="{{$goal->id}}">
+                                        <!-- Submit Button -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class= "col-md-1 text-center">
                 <form method="post" action="/goals/delete">

@@ -17,7 +17,7 @@ class TasksController extends Controller
     public function calendar(Request $request)
     {
         $events=[];
-        $tasks = Task::where('user_id', "=", auth()->user()->id)->where("active", "=", 1)->get();
+        $tasks = Task::where('user_id', "=", auth()->user()->id)->where("active", "=", 1)->where("complete", "=", 0)->get();
         $url = 'http://127.0.0.1:8000/tasks/';
         foreach($tasks as $key=>$value){
             if($value->importance == 1){
@@ -144,7 +144,7 @@ class TasksController extends Controller
     {
         $user = auth()->user()->id;
         if($task->user_id == auth()->user()->id){
-            return view('show', compact('task', 'user'));
+            return view('tasks.show', compact('task', 'user'));
         }else{
             return back()->with(["error" => "You do not have permission to view this task"]);
         }
@@ -157,7 +157,7 @@ class TasksController extends Controller
         $delete = Task::where('id', $id)->update(['active' => 0]);
 
         if($delete){
-            return back()->with(["status" => "Successfully removed task."]);
+            return redirect('/checklist')->with(["status" => "Successfully removed task."]);
         } else{
             return back()->withErrors("An error occurred please try again");
         };
@@ -173,7 +173,7 @@ class TasksController extends Controller
         }
 
         if($update){
-            return redirect('/'. $id)->with(["status" => "Edit successful"]);
+            return redirect('/tasks/'. $id)->with(["status" => "Edit successful"]);
         } else{
             return back()->withErrors("An error occurred please try again");
         }; 
