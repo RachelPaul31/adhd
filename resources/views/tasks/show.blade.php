@@ -60,19 +60,19 @@
                                     <form method="POST" action="/tasks/edit">
                                         {{ csrf_field() }}
                                         <!-- Title -->
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group">
                                             <label for="title">Title:</label>
-                                            <input type="text" class="form-control" id="title" name="title" >
+                                            <input type="text" class="form-control" id="name" name="name" value="{{$task->name}}">
                                         </div>
                                         <!-- body -->
                                         <div class="form-group col-md-12">
                                             <label for="exampleInputPassword1">Body</label>
-                                            <textarea id="body" name="body" class="form-control" > </textarea>
+                                            <textarea id="body" name="body" class="form-control" >{{ $task->body }} </textarea>
                                         </div>    
                                         <!-- time -->
                                         <div class="form-group col-md-12">
                                             <label for="title">Time Needed (please input in format 00:00:00):</label>
-                                            <input type="text" class="form-control" id="time" name="time" >
+                                            <input type="text" class="form-control" id="time" name="time" value="{{$task->time}}">
                                         </div>
                                         <!-- Importance -->
                                         <div class="form-group col-md-12">
@@ -121,7 +121,7 @@
                                         <!-- Percent -->
                                         <div class="form-group col-md-12">
                                             <label for="exampleInputPassword1">Percent Complete</label>
-                                            <textarea id="percent" name="percent" class="form-control" > </textarea>
+                                            <textarea id="percent" name="percent" class="form-control" >{{ $task->percent_complete}} </textarea>
                                         </div>
                                         <!-- Date -->
                                         <div class="form-group col-md-12">

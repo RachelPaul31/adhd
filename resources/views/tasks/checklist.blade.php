@@ -7,40 +7,32 @@
         <div class="col-md-1">
             Sort By:
         </div>
-        <div class="col-md-1">
+        <div class="col-md-10">
             <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="importance"> 
                 <button type="submit" class="btn btn-primary btn-sm">Priority</button>
             </form>
-        </div>
-        
-        <div class="col-md-2">
+
             <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="time"> 
                 <button type="submit" class="btn btn-primary btn-sm">Est. Time Needed</button>
             </form>
-        </div>
 
-        <div class="col-md-1">
             <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="due_date"> 
                 <button type="submit" class="btn btn-primary btn-sm">Due Date</button>
             </form>
-        </div>
 
-        <div class="col-md-1">
             <form method="get" action="/tasks/checklist">
                 {{ csrf_field() }}
                 <input type="hidden" name="sort" value="name"> 
                 <button type="submit" class="btn btn-primary btn-sm">A-Z</button>
             </form>
         </div>
-        <div class="col-md-5">
 
-        </div>
         <div class="col-md-1 align-right">
             <a class="btn btn-primary btn" href="/tasks/create" role="button">Add Task</a>
         </div>

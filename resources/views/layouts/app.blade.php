@@ -50,7 +50,6 @@
                             <li><a class="nav-link" href="/assess">Self-Assess</a></li>
                             <li><a class="nav-link" href="/goals">Goals</a></li>
                             <li><a class="nav-link" href="/timer">Timer</a></li>
-                            <li><a class="nav-link" href="/notes">Notes</a></li>
                     @endguest
                     </ul>
 

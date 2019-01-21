@@ -1,99 +1,38 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1> An App for ADHD Using Self-Management </h1>
+            <h3>Please Read! </h3>
         </div>
-    </body>
-</html>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Thank you for agreeing to participating in this research project.
+            This explains the self-management techniques that are used in this app, and some of the research behind it. For those who are interested, I summarized some of the previous research and explained how it works. For those who aren’t interested, skip to “So what do you do?” and you’ll get all the information you need. </p> 
+            <p>The Barkley theoretical model of ADHD proposed a theory that ADHD stems from a deficit in inhibitory control caused by a neurological difference in the prefrontal cortex, causing issues with sustained attention, behavioral inhibition, and executive function, affecting organization and planning, self-regulation of affect/motivation, and behavioral analysis and synthesis. These impaired executive functions directly affect an individual’s ability to self-manage behavior by limiting their capacity to a) consider their own behavior in the context of past events or possible future consequences, b) internalize self-directing statements c) self-regulate emotional reactions, motivation or effort towards a goal, and d) coordinate evaluation of behavior through analysis of events or synthesis of ideas. 
+            </p>
+            <p>Self-management involves reflecting on and rating behavior related to symptoms in order to better understand and control yourself and is used to independently complete tasks and take an active role in monitoring and reinforcing your own behavior. The key to self-management is conscious appraisal of immediate past behaviors. In periodically taking the time to consciously evaluate yourself and notice how you are performing, you start to recognize your symptoms before they derail you. Studies from Blicha and Belfiore, Reid et al, Axelrod et al, and more have shown consistent results with self-management interventions improving task behavior, task completion, and productivity.
+ </p>
+            <p>Self-management includes self-monitoring, when one monitors and assesses a target behavior and self-records the results, with two common types being self-monitoring of attention and self-monitoring of performance. It also includes self-reinforcement, where one sets goals, self-assesses their performance, and self-rewards.  </p>
+            <h4>So what do you do? </h4>
+            <p>On the Self-Assess page of this app, you can assess your behaviors(On task behavior, productivity, progress/completion of tasks, prompt completion of tasks, and organization.) on a 1-5 scale.  Periodically, (ideally every 15-30 minutes or less while you are working), take a few seconds to reflect and appraise your immediate past behavior and submit a self-assessment, and also think about the behaviors that helped or hurt your self-assessed score in that area, and how you can go about improving it. Set goals for yourself (on the goals page) based on the behaviors you are going to be self-assessing, and general short-term goals for yourself, and reward yourself when you progress towards your goal, complete a goal, or improve on your assessed behaviors. </p>
+            <p>The goal of this project is to determine the effectiveness of an app using self-management techniques to help people with ADHD manage their symptoms, but the app also includes aspects of other apps that have been found beneficial in past research. It functions as a task manager where you can visually see your tasks by date and color coded by importance on a calendar, or as a checklist that can be sorted various ways. Additionally, it has a timer page where it explains Tomatoes and allows you to set a timer.</p>
+            <p>You are the beta group for this so please let me know if anything does not work so I can fix and update it to get it working. If you have any questions, comments, or concerns, my email is rachelp4701@gmail.com, feel free to email me anytime. 
+
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <a class="btn btn-primary btn-lg" href="/register" role="button">Sign Up</a>
+        <a class="btn btn-primary btn-lg" href="/login" role="button">Log In</a>
+        </div>
+    </div>
+</div>
+
+
+@endsection

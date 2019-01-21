@@ -104,12 +104,12 @@
                                         <!-- Title -->
                                         <div class="form-group col-md-12">
                                             <label for="title">Title:</label>
-                                            <input type="text" class="form-control" id="title" name="title" >
+                                            <input type="text" class="form-control" id="title" name="title" value="{{$goal->name}}">
                                         </div>
                                         <!-- body -->
                                         <div class="form-group col-md-12">
                                             <label for="exampleInputPassword1">Body</label>
-                                            <textarea id="body" name="body" class="form-control" > </textarea>
+                                            <textarea id="body" name="body" class="form-control" > {{$goal->body}}</textarea>
                                         </div>    
                                         <!-- Date -->
                                         <div class="form-group col-md-12">
